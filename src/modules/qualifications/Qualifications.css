@@ -1,0 +1,227 @@
+
+.qualifications {
+    margin-top: 12px;
+    padding: clamp(24px, 4vw, 54px);
+    color: var(--color-white);
+    background: var(--color-burgundy);
+}
+
+.qualifications__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgb(255 255 255 / 25%);
+}
+
+.qualifications__eyebrow,
+.qualifications__header-note,
+.qualifications__overline,
+.qualifications__card-number,
+.qualifications__footer {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+}
+
+.qualifications__eyebrow,
+.qualifications__overline {
+    color: #e9c6cb;
+}
+
+.qualifications__header-note {
+    color: rgb(255 255 255 / 65%);
+    text-align: right;
+}
+
+.qualifications__intro {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: end;
+    gap: 36px;
+    padding-block: clamp(34px, 5vw, 64px);
+}
+
+.qualifications__overline {
+    display: block;
+    margin-bottom: 16px;
+}
+
+.qualifications__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(68px, 10vw, 132px);
+    font-weight: 800;
+    line-height: 0.8;
+    letter-spacing: -0.04em;
+}
+
+.qualifications__title span {
+    color: #d9a9b0;
+}
+
+.qualifications__description {
+    max-width: 390px;
+    margin: 0 0 5px auto;
+    color: rgb(255 255 255 / 78%);
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.qualifications__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.qualifications__card {
+    position: relative;
+    display: flex;
+    min-height: 180px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    padding: clamp(20px, 3vw, 32px);
+    color: var(--color-text);
+    background: var(--color-paper);
+    transition:
+            background 0.25s ease,
+            color 0.25s ease;
+}
+
+.qualifications__card:hover {
+    color: var(--color-white);
+    background: #731e2b;
+}
+
+.qualifications__card-number {
+    color: var(--color-burgundy);
+}
+
+.qualifications__card:hover .qualifications__card-number {
+    color: #f0cfd3;
+}
+
+.qualifications__card h3 {
+    margin: 0 0 10px;
+    font-family: var(--font-display);
+    font-size: clamp(27px, 3.4vw, 43px);
+    font-weight: 800;
+    line-height: 0.95;
+}
+
+.qualifications__card p {
+    max-width: 340px;
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.qualifications__card:hover p {
+    color: rgb(255 255 255 / 78%);
+}
+
+.qualifications__card-arrow {
+    position: absolute;
+    top: 20px;
+    right: 22px;
+    font-size: 18px;
+}
+
+.qualifications__tools {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 28px;
+    padding-block: 36px;
+    margin-top: 10px;
+    border-top: 1px solid rgb(255 255 255 / 25%);
+    border-bottom: 1px solid rgb(255 255 255 / 25%);
+}
+
+.qualifications__tools-heading h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 0.95;
+}
+
+.qualifications__tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    gap: 8px;
+}
+
+.qualifications__tag {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    padding: 0 14px;
+    border: 1px solid rgb(255 255 255 / 40%);
+    border-radius: 100px;
+    color: var(--color-white);
+    font-size: 10px;
+    letter-spacing: 0.3px;
+}
+
+.qualifications__footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 22px;
+    color: rgb(255 255 255 / 65%);
+}
+
+@media (max-width: 700px) {
+    .qualifications {
+        padding: 24px 20px;
+    }
+
+    .qualifications__header-note {
+        max-width: 120px;
+        line-height: 1.6;
+    }
+
+    .qualifications__intro {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding-block: 36px;
+    }
+
+    .qualifications__title {
+        font-size: clamp(68px, 15vw, 100px);
+    }
+
+    .qualifications__description {
+        margin: 0;
+        font-size: 12px;
+    }
+
+    .qualifications__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .qualifications__card {
+        min-height: 155px;
+    }
+
+    .qualifications__card h3 {
+        font-size: 36px;
+    }
+
+    .qualifications__tools {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding-block: 28px;
+    }
+
+    .qualifications__footer {
+        flex-direction: column;
+        gap: 10px;
+        font-size: 8px;
+        line-height: 1.6;
+    }
+}

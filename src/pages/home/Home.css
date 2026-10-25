@@ -1,0 +1,115 @@
+
+.home {
+    width: min(
+            calc(100% - var(--page-gutter) * 2),
+            var(--container-width)
+    );
+    margin-inline: auto;
+}
+
+/* Временные секции до реализации полноценных компонентов */
+
+.home__sections {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    padding-top: 12px;
+}
+
+.home__section {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    min-height: 280px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    overflow: hidden;
+    padding: clamp(22px, 3vw, 42px);
+    background: var(--color-white);
+    color: var(--color-text);
+}
+
+.home__section--burgundy {
+    color: var(--color-white);
+    background: var(--color-burgundy);
+}
+
+.home__section-number,
+.home__section-note {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+}
+
+.home__section-number {
+    color: var(--color-burgundy);
+}
+
+.home__section--burgundy .home__section-number {
+    color: #e9cfd2;
+}
+
+.home__section h2 {
+    margin: 30px 0;
+    font-family: var(--font-display);
+    font-size: clamp(42px, 6vw, 82px);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.025em;
+    overflow-wrap: anywhere;
+}
+
+.home__section-note {
+    color: var(--color-muted);
+}
+
+.home__section--burgundy .home__section-note {
+    color: #e9cfd2;
+}
+
+/* Планшеты */
+
+@media (max-width: 900px) {
+    .home__section {
+        min-height: 240px;
+    }
+
+    .home__section h2 {
+        font-size: clamp(38px, 6vw, 64px);
+    }
+}
+
+/* Мобильные устройства */
+
+@media (max-width: 600px) {
+    .home__sections {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+        padding-top: 10px;
+    }
+
+    .home__section {
+        min-height: 220px;
+        padding: 24px;
+    }
+
+    .home__section h2 {
+        font-size: clamp(48px, 13vw, 72px);
+    }
+}
+
+
+.home {
+    width: min(
+            calc(100% - var(--page-gutter) * 2),
+            var(--container-width)
+    );
+    margin-inline: auto;
+}
+
+@media (max-width: 760px) {
+    .home {
+        width: calc(100% - 32px);
+    }
+}

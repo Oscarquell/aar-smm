@@ -1,0 +1,230 @@
+
+.about {
+    margin-top: 12px;
+    padding: clamp(24px, 4vw, 54px);
+    color: var(--color-white);
+    background: var(--color-burgundy);
+}
+
+.about__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgb(255 255 255 / 25%);
+}
+
+.about__eyebrow,
+.about__heading-note,
+.about__label,
+.about__image-index,
+.about__highlight-number {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+}
+
+.about__eyebrow,
+.about__label {
+    color: #f0d5d8;
+}
+
+.about__heading-note {
+    color: rgb(255 255 255 / 65%);
+    text-align: right;
+}
+
+.about__grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: clamp(28px, 6vw, 90px);
+    padding-block: clamp(34px, 5vw, 70px);
+}
+
+.about__content {
+    max-width: 560px;
+}
+
+.about__title {
+    margin: 22px 0;
+    font-family: var(--font-display);
+    font-size: clamp(64px, 9vw, 124px);
+    font-weight: 800;
+    line-height: 0.82;
+    letter-spacing: -0.035em;
+}
+
+.about__title span {
+    color: #d6a5ab;
+}
+
+.about__description {
+    max-width: 450px;
+    margin: 20px 0 0;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.about__description--muted {
+    color: rgb(255 255 255 / 68%);
+}
+
+.about__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid rgb(255 255 255 / 55%);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.about__link span {
+    font-size: 16px;
+    transition: transform 0.2s ease;
+}
+
+.about__link:hover span {
+    transform: translate(3px, -3px);
+}
+
+.about__visual {
+    position: relative;
+    width: 100%;
+    max-width: 430px;
+    justify-self: end;
+    padding-bottom: 32px;
+}
+
+.about__image-wrap {
+    position: relative;
+    height: clamp(340px, 42vw, 530px);
+    overflow: hidden;
+    background: #d8ccc5;
+}
+
+.about__image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    filter: saturate(0.85);
+}
+
+.about__image-index {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    padding: 9px 11px;
+    color: var(--color-burgundy);
+    background: var(--color-paper);
+}
+
+.about__signature {
+    position: absolute;
+    right: -12px;
+    bottom: 0;
+    color: #f0d5d8;
+    font-family: var(--font-script);
+    font-size: clamp(40px, 5vw, 64px);
+    transform: rotate(-7deg);
+}
+
+.about__highlights {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid rgb(255 255 255 / 25%);
+}
+
+.about__highlight {
+    position: relative;
+    min-width: 0;
+    padding: 24px 20px 0 0;
+}
+
+.about__highlight + .about__highlight {
+    padding-left: 24px;
+    border-left: 1px solid rgb(255 255 255 / 25%);
+}
+
+.about__highlight-number {
+    color: #d6a5ab;
+}
+
+.about__highlight h3 {
+    margin: 16px 0 8px;
+    font-family: var(--font-display);
+    font-size: clamp(24px, 3vw, 38px);
+    overflow-wrap: anywhere;
+}
+
+.about__highlight p {
+    margin: 0;
+    color: rgb(255 255 255 / 70%);
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+@media (max-width: 700px) {
+    .about {
+        padding: 24px 20px;
+    }
+
+    .about__heading {
+        align-items: flex-start;
+    }
+
+    .about__heading-note {
+        max-width: 125px;
+        line-height: 1.6;
+    }
+
+    .about__grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding-block: 36px;
+    }
+
+    .about__title {
+        font-size: clamp(68px, 16vw, 100px);
+    }
+
+    .about__description {
+        font-size: 12px;
+    }
+
+    .about__visual {
+        width: 88%;
+        max-width: none;
+        justify-self: center;
+    }
+
+    .about__image-wrap {
+        height: auto;
+        aspect-ratio: 4 / 5;
+    }
+
+    .about__signature {
+        right: -8px;
+        font-size: 48px;
+    }
+
+    .about__highlights {
+        grid-template-columns: 1fr;
+    }
+
+    .about__highlight,
+    .about__highlight + .about__highlight {
+        padding: 20px 0;
+        border-left: none;
+        border-bottom: 1px solid rgb(255 255 255 / 20%);
+    }
+
+    .about__highlight h3 {
+        margin: 10px 0 5px;
+    }
+}
