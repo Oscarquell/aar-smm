@@ -8,7 +8,7 @@ export default function Hero() {
             <div className="hero__top">
                 <div className="hero__intro">
           <span className="hero__eyebrow">
-            SMM SPECIALIST / BISHKEK
+            SMM СПЕЦИАЛИСТ / BISHKEK
           </span>
 
                     <p>
@@ -17,7 +17,7 @@ export default function Hero() {
                     </p>
                 </div>
 
-                <span className="hero__index">PORTFOLIO — 2026</span>
+                <span className="hero__index">ПОРТФОЛИО — 2026</span>
             </div>
 
             <div className="hero__visual">
@@ -42,13 +42,13 @@ export default function Hero() {
                 <span className="hero__script">Manager.</span>
 
                 <span className="hero__vertical-label">
-          STRATEGY · CONTENT · AESTHETICS
+          СТРАТЕГИЯ · КОНТЕНТ · ЭСТЕТИКА
         </span>
             </div>
 
             <div className="hero__bottom">
         <span className="hero__website">
-          AZEM / CREATIVE PORTFOLIO
+          АЗЕМ / ПОРТФОЛИО
         </span>
 
                 <a className="hero__scroll" href="#about">

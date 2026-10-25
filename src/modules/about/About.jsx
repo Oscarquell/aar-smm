@@ -8,11 +8,11 @@ const highlights = [
         label: "Стратегия и продвижение",
     },
     {
-        value: "CONTENT",
+        value: "КОНТЕНТ",
         label: "Фото, видео и Reels",
     },
     {
-        value: "VISUAL",
+        value: "ВИЗУАЛ",
         label: "Эстетика и стиль бренда",
     },
 ];
@@ -21,15 +21,15 @@ export default function About() {
     return (
         <section className="about" id="about">
             <div className="about__heading">
-                <span className="about__eyebrow">01 / ABOUT ME</span>
+                <span className="about__eyebrow">01 / ОБО МНЕ</span>
                 <span className="about__heading-note">
-          THE PERSON BEHIND THE CONTENT
+          ЧЕЛОВЕК КОНТЕНТА
         </span>
             </div>
 
             <div className="about__grid">
                 <div className="about__content">
-                    <span className="about__label">HELLO, I'M AZEM</span>
+                    <span className="about__label">ПРИВЕТ, Я АЗЕМ!</span>
 
                     <h2 className="about__title">
                         BEHIND
