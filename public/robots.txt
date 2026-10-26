@@ -2,4 +2,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://azem-smm.site/sitemap.xml
+Sitemap: https://www.azem-smm.site/sitemap.xml
