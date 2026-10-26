@@ -1,10 +1,12 @@
 
 .header {
-    position: relative;
-    z-index: 100;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     width: 100%;
     background: var(--color-paper);
     border-bottom: 1px solid var(--color-border);
+    box-shadow: 0 4px 18px rgb(38 33 34 / 4%);
 }
 
 .header__inner {
