@@ -1,24 +1,25 @@
 
+import ladvina from "../../assets/projects/ladvina.jpg";
 import "./CaseStudy.css";
 
-const projectDetails = [
+const steps = [
     {
         number: "01",
-        title: "THE CHALLENGE",
+        title: "ПРОДУКТ",
         description:
-            "Определить визуальное направление бренда, понять задачи коммуникации и выстроить целостное присутствие в социальных сетях.",
+            "Подчёркиваю фактуры, детали изделий и особенности коллекции.",
     },
     {
         number: "02",
-        title: "THE APPROACH",
+        title: "КОНТЕНТ",
         description:
-            "Продумать контентные рубрики, визуальную подачу, форматы публикаций и принципы взаимодействия с аудиторией.",
+            "Сочетаю предметные кадры, образы и публикации в единой концепции.",
     },
     {
         number: "03",
-        title: "THE EXECUTION",
+        title: "СТИЛЬ БРЕНДА",
         description:
-            "Подготовить контент, организовать съёмки и объединить публикации в единую визуальную концепцию.",
+            "Формирую целостную визуальную подачу, соответствующую характеру бренда.",
     },
 ];
 
@@ -26,96 +27,120 @@ export default function CaseStudy() {
     return (
         <section className="case-study" id="cases">
             <div className="case-study__header">
-        <span className="case-study__eyebrow">
-          04 / CASE STUDY
-        </span>
-
-                <span className="case-study__header-note">
-          FROM STRATEGY TO CONTENT
-        </span>
+                <span>04 / ВЫБРАННЫЙ КЕЙС</span>
+                <span>МОДА · НИЖНЕЕ БЕЛЬЁ · ВИЗУАЛ</span>
             </div>
 
             <div className="case-study__hero">
-                <div className="case-study__hero-content">
-          <span className="case-study__overline">
-            BEHIND THE PROJECT
+                <div className="case-study__visual">
+                    <img
+                        src={ladvina}
+                        alt="Визуальная подборка контента LaDiva Lingerie"
+                        loading="lazy"
+                    />
+
+                    <span className="case-study__visual-label">
+            LA DIVA / VISUAL STORY
+          </span>
+
+                    <span className="case-study__visual-index">01</span>
+                </div>
+
+                <div className="case-study__intro">
+          <span className="case-study__eyebrow">
+            INSIDE THE BRAND
           </span>
 
                     <h2 className="case-study__title">
-                        IDEAS INTO
+                        MORE THAN
                         <br />
-                        IDENTITY<span>.</span>
+                        <span>LINGERIE.</span>
                     </h2>
 
-                    <p className="case-study__intro">
-                        За каждым сильным визуалом стоит идея.
-                        Показываю, как стратегия, контент и
-                        эстетика объединяются в работе над брендом.
+                    <div className="case-study__project-name">
+                        <span>BRAND PROJECT / 001</span>
+                        <h3>LA DIVA</h3>
+                    </div>
+
+                    <p className="case-study__description">
+                        Нижнее бельё — это не только продукт, но и
+                        настроение, эстетика и внимание к деталям.
+                        Визуальная подача LaDiva раскрывает красоту
+                        изделий через выразительные фактуры, оттенки
+                        и гармоничную композицию.
                     </p>
 
-                    <span className="case-study__project-label">
-            PROJECT BREAKDOWN / 001
-          </span>
-                </div>
-
-                <div className="case-study__hero-visual">
-                    <div className="case-study__visual-placeholder">
-                        <span>PROJECT VISUAL</span>
-                        <span className="case-study__visual-mark">AZ.</span>
+                    <div className="case-study__tags">
+                        <span>PRODUCT VISUALS</span>
+                        <span>FASHION CONTENT</span>
+                        <span>INSTAGRAM</span>
                     </div>
+
+                    <a className="case-study__link" href="#portfolio">
+                        СМОТРЕТЬ ПОРТФОЛИО
+                        <span aria-hidden="true">↗</span>
+                    </a>
                 </div>
             </div>
 
-            <div className="case-study__details">
-                {projectDetails.map((detail) => (
-                    <article
-                        className="case-study__detail"
-                        key={detail.number}
-                    >
-            <span className="case-study__detail-number">
-              {detail.number}
-            </span>
-
-                        <h3>{detail.title}</h3>
-
-                        <p>{detail.description}</p>
-                    </article>
-                ))}
-            </div>
-
-            <div className="case-study__outcome">
-                <div className="case-study__outcome-heading">
-          <span className="case-study__overline">
-            THE RESULT
+            <div className="case-study__process">
+                <div className="case-study__process-heading">
+          <span className="case-study__eyebrow">
+            ТВОРЧЕСКИЙ ПОДХОД
           </span>
 
                     <h3>
-                        CONSISTENCY
+                        ОТ ИДЕИ
                         <br />
-                        IS EVERYTHING.
+                        ДО <span>ВИЗУАЛА.</span>
                     </h3>
+
+                    <p>
+                        Каждый элемент контента работает на образ бренда —
+                        от первого кадра до оформления всей ленты.
+                    </p>
                 </div>
 
-                <div className="case-study__outcome-content">
-                    <p>
-                        Итог работы оцениваем по реальным материалам
-                        проекта и согласованным целям: качеству
-                        визуальной коммуникации, регулярности контента
-                        и показателям социальных сетей.
-                    </p>
+                <div className="case-study__steps">
+                    {steps.map((step) => (
+                        <article
+                            className="case-study__step"
+                            key={step.number}
+                        >
+              <span className="case-study__step-number">
+                {step.number}
+              </span>
 
-                    <span>
-            Фактические результаты добавим после выбора
-            конкретного проекта.
-          </span>
+                            <h4>{step.title}</h4>
+
+                            <p>{step.description}</p>
+                        </article>
+                    ))}
                 </div>
             </div>
 
-            <div className="case-study__footer">
-                <span>CONCEPT · CONTENT · COMMUNICATION</span>
-                <a href="#contact">
-                    ОБСУДИТЬ ПРОЕКТ <span>↗</span>
+            <div className="case-study__bottom">
+                <div>
+          <span className="case-study__eyebrow">
+            YOUR BRAND DESERVES A POINT OF VIEW
+          </span>
+
+                    <h3>
+                        LET’S MAKE
+                        <br />
+                        YOUR BRAND <span>STAND OUT.</span>
+                    </h3>
+                </div>
+
+                <a href="#contact" className="case-study__cta">
+                    ОБСУДИТЬ ПРОЕКТ
+                    <span aria-hidden="true">↗</span>
                 </a>
+            </div>
+
+            <div className="case-study__footer">
+                <span>ВИЗУАЛ · КОНТЕНТ · ИСТОРИЯ БРЕНДА</span>
+                <span>AZEM / SMM PORTFOLIO</span>
             </div>
         </section>
     );

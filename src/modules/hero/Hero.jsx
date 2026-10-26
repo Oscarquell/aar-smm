@@ -1,6 +1,6 @@
 
 import "./Hero.css";
-import azemPortrait from "../../assets/images/azem-portrait.jpg";
+import azemPortrait2 from "../../assets/images/azem-portrait-2.jpg";
 
 export default function Hero() {
     return (
@@ -32,7 +32,7 @@ export default function Hero() {
 
                 <div className="hero__portrait">
                     <img
-                        src={azemPortrait}
+                        src={azemPortrait2}
                         alt="Азем — SMM-специалист"
                         className="hero__portrait-image"
                         fetchPriority="high"
