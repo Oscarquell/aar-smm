@@ -7,9 +7,9 @@ export default function Hero() {
         <section className="hero" id="home">
             <div className="hero__top">
                 <div className="hero__intro">
-          <span className="hero__eyebrow">
-            SMM СПЕЦИАЛИСТ / BISHKEK
-          </span>
+                    <span className="hero__eyebrow">
+                        SMM СПЕЦИАЛИСТ / BISHKEK
+                    </span>
 
                     <p>
                         Помогаю брендам находить свой визуальный язык
@@ -24,6 +24,9 @@ export default function Hero() {
                 <div className="hero__title">
                     <span className="hero__title-small">PERSONAL BRAND</span>
                     <h1>
+                        <span className="hero__sr-only">
+                            Азем — SMM-специалист в Бишкеке.{" "}
+                        </span>
                         SOCIAL
                         <br />
                         MEDIA
@@ -33,7 +36,7 @@ export default function Hero() {
                 <div className="hero__portrait">
                     <img
                         src={azemPortrait2}
-                        alt="Азем — SMM-специалист"
+                        alt="Азем, SMM-специалист из Бишкека"
                         className="hero__portrait-image"
                         fetchPriority="high"
                     />
@@ -42,14 +45,12 @@ export default function Hero() {
                 <span className="hero__script">Manager.</span>
 
                 <span className="hero__vertical-label">
-          СТРАТЕГИЯ · КОНТЕНТ · ЭСТЕТИКА
-        </span>
+                    СТРАТЕГИЯ · КОНТЕНТ · ЭСТЕТИКА
+                </span>
             </div>
 
             <div className="hero__bottom">
-        <span className="hero__website">
-          АЗЕМ / ПОРТФОЛИО
-        </span>
+                <span className="hero__website">АЗЕМ / ПОРТФОЛИО</span>
 
                 <a className="hero__scroll" href="#about">
                     ЛИСТАЙТЕ НИЖЕ <span>↓</span>

@@ -5,15 +5,15 @@ import azemPortrait from "../../assets/images/azem-portrait.jpg";
 const highlights = [
     {
         value: "SMM",
-        label: "Стратегия и продвижение",
+        label: "Стратегия и продвижение брендов",
     },
     {
         value: "КОНТЕНТ",
-        label: "Фото, видео и Reels",
+        label: "Фото, видео и Reels для Instagram",
     },
     {
         value: "ВИЗУАЛ",
-        label: "Эстетика и стиль бренда",
+        label: "Единый стиль и образ бренда",
     },
 ];
 
@@ -23,8 +23,8 @@ export default function About() {
             <div className="about__heading">
                 <span className="about__eyebrow">01 / ОБО МНЕ</span>
                 <span className="about__heading-note">
-          ЧЕЛОВЕК КОНТЕНТА
-        </span>
+                    ЧЕЛОВЕК КОНТЕНТА
+                </span>
             </div>
 
             <div className="about__grid">
@@ -38,16 +38,16 @@ export default function About() {
                     </h2>
 
                     <p className="about__description">
-                        Я SMM-специалист, который объединяет стратегическое
-                        мышление, визуальную эстетику и создание контента,
-                        чтобы помогать брендам формировать узнаваемый образ
-                        и выстраивать отношения со своей аудиторией.
+                        Я Азем — SMM-специалист из Бишкека. Помогаю брендам
+                        развивать социальные сети через контент-стратегию,
+                        визуальную концепцию и создание Reels для Instagram.
                     </p>
 
                     <p className="about__description about__description--muted">
-                        Мой подход — не просто публиковать контент,
-                        а понимать характер бренда, его аудиторию
-                        и задачи бизнеса.
+                        Для меня продвижение — это не просто публикации.
+                        Я изучаю характер бренда, его аудиторию и задачи
+                        бизнеса, чтобы создавать последовательную
+                        коммуникацию и узнаваемый визуальный образ.
                     </p>
 
                     <a className="about__link" href="#portfolio">
@@ -59,7 +59,7 @@ export default function About() {
                     <div className="about__image-wrap">
                         <img
                             src={azemPortrait}
-                            alt="Азем, SMM-специалист"
+                            alt="Азем — SMM-специалист из Бишкека"
                             loading="lazy"
                         />
                         <span className="about__image-index">AZ / 001</span>
@@ -72,9 +72,9 @@ export default function About() {
             <div className="about__highlights">
                 {highlights.map((item, index) => (
                     <article className="about__highlight" key={item.value}>
-            <span className="about__highlight-number">
-              0{index + 1}
-            </span>
+                        <span className="about__highlight-number">
+                            0{index + 1}
+                        </span>
 
                         <h3>{item.value}</h3>
                         <p>{item.label}</p>

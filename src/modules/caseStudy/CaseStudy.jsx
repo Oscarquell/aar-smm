@@ -35,7 +35,7 @@ export default function CaseStudy() {
                 <div className="case-study__visual">
                     <img
                         src={ladvina}
-                        alt="Визуальная подборка контента LaDiva Lingerie"
+                        alt="LaDiva Lingerie — кейс SMM-портфолио Азем: визуальный контент для бренда нижнего белья"
                         loading="lazy"
                     />
 
