@@ -10,14 +10,14 @@ const contacts = [
     },
     {
         label: "WHATSAPP",
-        value: "+996 755 26 42 62",
-        href: "https://wa.me/996755264262",
+        value: "+996 509 38 57 77",
+        href: "https://wa.me/996509385777",
         hint: "Написать в WhatsApp",
     },
     {
         label: "ТЕЛЕФОН",
-        value: "+996 702 001 467",
-        href: "tel:+996702001467",
+        value: "+996 509 385 777",
+        href: "tel:+996509385777",
         hint: "Позвонить",
     },
 ];
