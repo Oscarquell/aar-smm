@@ -1,0 +1,126 @@
+.marquee {
+    position: relative;
+    z-index: 5;
+    width: 100vw;
+    margin: 0 calc(50% - 50vw) 12px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.marquee__row {
+    --marquee-speed: 38s;
+    width: 100%;
+    overflow: hidden;
+    color: var(--color-burgundy);
+    white-space: nowrap;
+}
+
+.marquee__row--light {
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.marquee__row--accent {
+    --marquee-speed: 30s;
+    color: var(--color-white);
+    background: var(--color-burgundy);
+}
+
+.marquee__track,
+.marquee__group {
+    display: flex;
+    width: max-content;
+}
+
+.marquee__track {
+    animation: marquee-scroll var(--marquee-speed) linear infinite;
+}
+
+.marquee__row--reverse .marquee__track {
+    animation-direction: reverse;
+}
+
+.marquee:hover .marquee__track {
+    animation-play-state: paused;
+}
+
+.marquee__group {
+    flex: 0 0 auto;
+    align-items: center;
+    gap: clamp(22px, 4vw, 58px);
+    padding: 12px clamp(22px, 4vw, 58px);
+}
+
+.marquee__row--accent .marquee__group {
+    padding-block: 16px;
+}
+
+.marquee__item {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(22px, 4vw, 58px);
+    font-size: clamp(10px, 1vw, 13px);
+    font-weight: 700;
+    letter-spacing: 1.4px;
+}
+
+.marquee__row--accent .marquee__item {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 3vw, 38px);
+    font-weight: 800;
+    letter-spacing: 0.3px;
+}
+
+.marquee__dot {
+    color: #b77b84;
+    font-size: 0.9em;
+}
+
+.marquee__row--accent .marquee__dot {
+    color: #e9cfd2;
+}
+
+@keyframes marquee-scroll {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 600px) {
+    .marquee {
+        margin-bottom: 8px;
+    }
+
+    .marquee__row {
+        --marquee-speed: 30s;
+    }
+
+    .marquee__row--accent {
+        --marquee-speed: 24s;
+    }
+
+    .marquee__group {
+        gap: 20px;
+        padding: 10px 20px;
+    }
+
+    .marquee__row--accent .marquee__group {
+        padding-block: 12px;
+    }
+
+    .marquee__item {
+        gap: 20px;
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .marquee__row--accent .marquee__item {
+        font-size: 22px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .marquee__track {
+        animation: none;
+    }
+}

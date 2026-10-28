@@ -1,6 +1,7 @@
 
 import Header from "../../components/header/Header";
 import Hero from "../../modules/hero/Hero";
+import Marquee from "../../components/marquee/Marquee";
 import About from "../../modules/about/About";
 
 import "./Home.css";
@@ -48,6 +49,8 @@ export default function Home() {
 
             <main className="home">
                 <Hero />
+
+                <Marquee />
 
                 <About />
 

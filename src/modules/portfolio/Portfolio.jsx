@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import PortfolioCard from "../../components/portfolio/PortfolioCard";
+import ErrorState from "../../components/feedback/ErrorState";
 import { getPortfolio } from "../../services/portfolioApi";
 import "./Portfolio.css";
 
@@ -43,7 +44,7 @@ export default function Portfolio() {
             </div>
 
             {loading && <p className="portfolio__status" role="status">Загружаю проекты…</p>}
-            {!loading && error && <p className="portfolio__status" role="alert">{error}. Проверьте, запущен ли backend.</p>}
+            {!loading && error && <ErrorState />}
             {!loading && !error && projects.length === 0 && (
                 <p className="portfolio__status">Скоро здесь появятся проекты.</p>
             )}
