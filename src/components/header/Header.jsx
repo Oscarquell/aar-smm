@@ -3,10 +3,10 @@ import { useState } from "react";
 import "./Header.css";
 
 const navLinks = [
-    { label: "ОБО МНЕ", href: "#about" },
-    { label: "МОИ РАБОТЫ", href: "#portfolio" },
-    { label: "КЕЙСЫ", href: "#cases" },
-    { label: "КОНТАКТЫ", href: "#contact" },
+    { label: "ОБО МНЕ", href: "/#about" },
+    { label: "МОИ РАБОТЫ", href: "/#portfolio" },
+    { label: "КЕЙСЫ", href: "/portfolio" },
+    { label: "КОНТАКТЫ", href: "/#contact" },
 ];
 
 export default function Header() {
@@ -19,7 +19,7 @@ export default function Header() {
             <div className="header__inner">
                 <a
                     className="header__logo"
-                    href="#home"
+                    href="/"
                     onClick={closeMenu}
                     aria-label="Азем — на главную"
                 >
@@ -44,14 +44,14 @@ export default function Header() {
 
                     <a
                         className="header__mobile-cta"
-                        href="#contact"
+                        href="/#contact"
                         onClick={closeMenu}
                     >
                         ОБСУДИТЬ ПРОЕКТ ↗
                     </a>
                 </nav>
 
-                <a className="header__cta" href="#contact">
+                <a className="header__cta" href="/#contact">
                     ОБСУДИТЬ ПРОЕКТ <span>↗</span>
                 </a>
 

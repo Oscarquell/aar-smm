@@ -22,7 +22,7 @@ const contacts = [
     },
 ];
 
-export default function Contact() {
+export default function Contact({ sectionNumber = "05 / 05" }) {
     return (
         <section className="contact" id="contact">
             <div className="contact__top">
@@ -30,7 +30,7 @@ export default function Contact() {
           HAVE A PROJECT IN MIND?
         </span>
 
-                <span className="contact__number">07 / 07</span>
+                <span className="contact__number">{sectionNumber}</span>
             </div>
 
             <div className="contact__main">

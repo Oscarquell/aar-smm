@@ -6,8 +6,6 @@ import About from "../../modules/about/About";
 import "./Home.css";
 import Qualifications from "../../modules/qualifications/Qualifications";
 import Portfolio from "../../modules/portfolio/Portfolio";
-import CaseStudy from "../../modules/caseStudy/CaseStudy";
-import Photography from "../../modules/photography/Photography";
 import Contact from "../../modules/contact/Contact";
 
 // const sections = [
@@ -56,10 +54,6 @@ export default function Home() {
                 <Qualifications />
 
                 <Portfolio />
-
-                <CaseStudy />
-
-                <Photography />
 
                 <Contact />
 
