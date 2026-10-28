@@ -1,5 +1,11 @@
 
+import { useState } from "react";
+import ImageLightbox from "../../components/imageLightbox/ImageLightbox";
 import "./Photography.css";
+import auraHome from "../../assets/projects/aura.homekgz.jpg";
+import onStudy from "../../assets/projects/onstudy.prep.jpg";
+import buketto from "../../assets/projects/buketto.jpg";
+import baipak from "../../assets/projects/baipak.jpg";
 
 const galleryItems = [
     {
@@ -7,7 +13,7 @@ const galleryItems = [
         category: "PRODUCT PHOTOGRAPHY",
         title: "Details that matter.",
         className: "photography__item--large",
-        image: null,
+        image: auraHome,
         tone: "rose",
     },
     {
@@ -15,7 +21,7 @@ const galleryItems = [
         category: "CREATIVE DIRECTION",
         title: "A visual story.",
         className: "",
-        image: null,
+        image: onStudy,
         tone: "sand",
     },
     {
@@ -23,7 +29,7 @@ const galleryItems = [
         category: "BEHIND THE SCENES",
         title: "The process.",
         className: "",
-        image: null,
+        image: buketto,
         tone: "dark",
     },
     {
@@ -31,12 +37,12 @@ const galleryItems = [
         category: "CONTENT PRODUCTION",
         title: "Made for the feed.",
         className: "photography__item--wide",
-        image: null,
+        image: baipak,
         tone: "light",
     },
 ];
 
-function GalleryItem({ item }) {
+function GalleryItem({ item, onOpen }) {
     return (
         <article
             className={`photography__item ${item.className}`}
@@ -45,21 +51,22 @@ function GalleryItem({ item }) {
                 className={`photography__visual photography__visual--${item.tone}`}
             >
                 {item.image ? (
-                    <img
-                        src={item.image}
-                        alt={item.title}
-                        loading="lazy"
-                    />
-                ) : (
-                    <div className="photography__placeholder">
-            <span className="photography__placeholder-mark">
-              AZ.
-            </span>
-                        <span className="photography__placeholder-label">
-              ADD YOUR PHOTO
-            </span>
-                    </div>
-                )}
+                    <>
+                        <button
+                            type="button"
+                            className="portfolio-card__image-button"
+                            onClick={() => onOpen(item)}
+                            aria-label={`Открыть изображение: ${item.title}`}
+                        >
+                            <img
+                                src={item.image}
+                                alt={`${item.title} — пример контента для социальных сетей`}
+                                loading="lazy"
+                            />
+                            <span className="portfolio-card__zoom" aria-hidden="true">⤢</span>
+                        </button>
+                    </>
+                ) : null}
 
                 <span className="photography__index">
           {item.id}
@@ -84,6 +91,8 @@ function GalleryItem({ item }) {
 }
 
 export default function Photography() {
+    const [activeImage, setActiveImage] = useState(null);
+
     return (
         <section className="photography" id="photography">
             <div className="photography__header">
@@ -119,7 +128,7 @@ export default function Photography() {
 
             <div className="photography__grid">
                 {galleryItems.map((item) => (
-                    <GalleryItem item={item} key={item.id} />
+                    <GalleryItem item={item} onOpen={setActiveImage} key={item.id} />
                 ))}
             </div>
 
@@ -130,6 +139,17 @@ export default function Photography() {
                     СОЗДАТЬ ЧТО-ТО ВМЕСТЕ <span>↗</span>
                 </a>
             </div>
+
+            {activeImage && (
+                <ImageLightbox
+                    image={activeImage.image}
+                    title={activeImage.title}
+                    alt={`${activeImage.title} — пример контента для социальных сетей`}
+                    id={activeImage.id}
+                    total={String(galleryItems.length).padStart(2, "0")}
+                    onClose={() => setActiveImage(null)}
+                />
+            )}
         </section>
     );
 }

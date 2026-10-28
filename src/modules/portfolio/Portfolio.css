@@ -626,7 +626,9 @@
 }
 
 .portfolio-card__image-button:hover .portfolio-card__zoom,
-.portfolio-card__image-button:focus-visible .portfolio-card__zoom {
+.portfolio-card__image-button:focus-visible .portfolio-card__zoom,
+.case-study__image-button:hover .portfolio-card__zoom,
+.case-study__image-button:focus-visible .portfolio-card__zoom {
     opacity: 1;
     transform: scale(1);
 }
@@ -760,6 +762,15 @@
     }
 
     .portfolio-card__zoom {
+        width: 32px;
+        height: 32px;
+        top: 10px;
+        right: 10px;
+        opacity: 1;
+        transform: none;
+    }
+
+    .case-study__image-button .portfolio-card__zoom {
         width: 32px;
         height: 32px;
         top: 10px;

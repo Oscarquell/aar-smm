@@ -1,5 +1,7 @@
 
+import { useState } from "react";
 import ladvina from "../../assets/projects/ladvina.jpg";
+import ImageLightbox from "../../components/imageLightbox/ImageLightbox";
 import "./CaseStudy.css";
 
 const steps = [
@@ -24,6 +26,8 @@ const steps = [
 ];
 
 export default function CaseStudy() {
+    const [activeImage, setActiveImage] = useState(false);
+
     return (
         <section className="case-study" id="cases">
             <div className="case-study__header">
@@ -33,11 +37,19 @@ export default function CaseStudy() {
 
             <div className="case-study__hero">
                 <div className="case-study__visual">
-                    <img
-                        src={ladvina}
-                        alt="LaDiva Lingerie — кейс SMM-портфолио Азем: визуальный контент для бренда нижнего белья"
-                        loading="lazy"
-                    />
+                    <button
+                        type="button"
+                        className="case-study__image-button"
+                        onClick={() => setActiveImage(true)}
+                        aria-label="Открыть изображение кейса La Diva"
+                    >
+                        <img
+                            src={ladvina}
+                            alt="LaDiva Lingerie — кейс SMM-портфолио Азем: визуальный контент для бренда нижнего белья"
+                            loading="lazy"
+                        />
+                        <span className="portfolio-card__zoom" aria-hidden="true">⤢</span>
+                    </button>
 
                     <span className="case-study__visual-label">
             LA DIVA / VISUAL STORY
@@ -67,7 +79,10 @@ export default function CaseStudy() {
                         настроение, эстетика и внимание к деталям.
                         Визуальная подача LaDiva раскрывает красоту
                         изделий через выразительные фактуры, оттенки
-                        и гармоничную композицию.
+                        и гармоничную композицию. В рамках проекта
+                        проработаны визуальная концепция и контент-подача
+                        для Instagram — от выбора акцентов до целостного
+                        образа ленты.
                     </p>
 
                     <div className="case-study__tags">
@@ -142,6 +157,17 @@ export default function CaseStudy() {
                 <span>ВИЗУАЛ · КОНТЕНТ · ИСТОРИЯ БРЕНДА</span>
                 <span>AZEM / SMM PORTFOLIO</span>
             </div>
+
+            {activeImage && (
+                <ImageLightbox
+                    image={ladvina}
+                    title="La Diva / Visual Story"
+                    alt="Кейс La Diva — визуальный контент для бренда нижнего белья"
+                    id="01"
+                    total="01"
+                    onClose={() => setActiveImage(false)}
+                />
+            )}
         </section>
     );
 }

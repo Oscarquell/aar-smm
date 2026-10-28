@@ -46,6 +46,32 @@
     line-height: 1.7;
 }
 
+.hero__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: fit-content;
+    min-height: 46px;
+    margin-top: 4px;
+    padding: 0 16px;
+    color: var(--color-white);
+    background: var(--color-burgundy);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.hero__cta:hover {
+    background: var(--color-burgundy-dark);
+    transform: translateY(-2px);
+}
+
+.hero__cta span {
+    font-size: 15px;
+}
+
 .hero__index {
     color: var(--color-muted);
 }
@@ -301,7 +327,7 @@
     position: relative;
     z-index: 3;
     width: fit-content;
-    margin-left: 28%;
+    margin-left: 18%;
 }
 
 .hero__title h1 {

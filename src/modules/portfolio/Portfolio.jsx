@@ -1,10 +1,11 @@
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import auraHomeKgz from "../../assets/projects/aura.homekgz.jpg";
 import onStudyPrep from "../../assets/projects/onstudy.prep.jpg";
 import buketo from "../../assets/projects/buketto.jpg";
 import baipak from "../../assets/projects/baipak.jpg";
+import ImageLightbox from "../../components/imageLightbox/ImageLightbox";
 
 import "./Portfolio.css";
 
@@ -191,62 +192,6 @@ function StandardContent({ project }) {
     );
 }
 
-function ImageLightbox({ image, title, id, onClose }) {
-    useEffect(() => {
-        const previousOverflow = document.body.style.overflow;
-        document.body.style.overflow = "hidden";
-
-        function handleKeyDown(event) {
-            if (event.key === "Escape") {
-                onClose();
-            }
-        }
-
-        window.addEventListener("keydown", handleKeyDown);
-
-        return () => {
-            document.body.style.overflow = previousOverflow;
-            window.removeEventListener("keydown", handleKeyDown);
-        };
-    }, [onClose]);
-
-    return (
-        <div
-            className="portfolio-lightbox"
-            onClick={onClose}
-            role="presentation"
-        >
-            <button
-                type="button"
-                className="portfolio-lightbox__close"
-                onClick={onClose}
-                aria-label="Закрыть изображение"
-            >
-                <span aria-hidden="true">×</span>
-            </button>
-
-            <div
-                className="portfolio-lightbox__content"
-                role="dialog"
-                aria-modal="true"
-                aria-label={`Изображение проекта ${title}`}
-                onClick={(event) => event.stopPropagation()}
-            >
-                <img
-                    className="portfolio-lightbox__image"
-                    src={image}
-                    alt={`${title} — полноэкранный просмотр`}
-                />
-
-                <div className="portfolio-lightbox__caption">
-                    <span>{title}</span>
-                    <span>{id} / 04</span>
-                </div>
-            </div>
-        </div>
-    );
-}
-
 export default function Portfolio() {
     const [activeImage, setActiveImage] = useState(null);
 
@@ -330,7 +275,9 @@ export default function Portfolio() {
                 <ImageLightbox
                     image={activeImage.image}
                     title={activeImage.title}
+                    alt={`${activeImage.title} — портфолио SMM-специалиста`}
                     id={activeImage.id}
+                    total={String(projects.length).padStart(2, "0")}
                     onClose={closeLightbox}
                 />
             )}

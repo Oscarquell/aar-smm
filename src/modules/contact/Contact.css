@@ -91,6 +91,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    min-width: 0;
 }
 
 .contact__link-label {
@@ -98,14 +99,28 @@
 }
 
 .contact__link-value {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
     color: var(--color-white);
     font-size: 13px;
     text-decoration: none;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 a.contact__link-value:hover {
-    opacity: 0.7;
+    opacity: 0.78;
+    transform: translateY(-2px);
+}
+
+a.contact__link-value:focus-visible {
+    outline: 2px solid #f0d5d8;
+    outline-offset: 5px;
+}
+
+.contact__link-action {
+    font-size: 16px;
 }
 
 .contact__link-value--placeholder {

@@ -3,19 +3,22 @@ import "./Contact.css";
 
 const contacts = [
     {
-        label: "INSTAGRAM",
-        value: "@yourusername",
-        href: null,
-    },
-    {
         label: "TELEGRAM",
-        value: "Написать мне",
-        href: null,
+        value: "@sonder777aar",
+        href: "https://t.me/sonder777aar",
+        hint: "Открыть чат в Telegram",
     },
     {
         label: "WHATSAPP",
-        value: "Обсудить проект",
-        href: null,
+        value: "+996 755 26 42 62",
+        href: "https://wa.me/996755264262",
+        hint: "Написать в WhatsApp",
+    },
+    {
+        label: "ТЕЛЕФОН",
+        value: "+996 702 001 467",
+        href: "tel:+996702001467",
+        hint: "Позвонить",
     },
 ];
 
@@ -43,12 +46,12 @@ export default function Contact() {
                     <span className="contact__asterisk">✳</span>
 
                     <p>
-                        Создадим визуал, который привлекает внимание,
-                        передаёт характер бренда и помогает ему расти.
+                        Обсудим задачу, подберём формат работы и наметим
+                        первые шаги для вашего бренда.
                     </p>
 
                     <p className="contact__invitation">
-                        Открыта к интересным проектам и сотрудничеству.
+                        SMM · таргетированная реклама · контент под ключ
                     </p>
                 </div>
             </div>
@@ -65,11 +68,14 @@ export default function Contact() {
                                 <a
                                     className="contact__link-value"
                                     href={item.href}
-                                    target="_blank"
-                                    rel="noreferrer"
+                                    target={item.label === "ТЕЛЕФОН" ? undefined : "_blank"}
+                                    rel={item.label === "ТЕЛЕФОН" ? undefined : "noreferrer"}
+                                    aria-label={`${item.hint}: ${item.value}`}
                                 >
                                     {item.value}
-                                    <span aria-hidden="true"> ↗</span>
+                                    <span className="contact__link-action" aria-hidden="true">
+                                        ↗
+                                    </span>
                                 </a>
                             ) : (
                                 <span className="contact__link-value contact__link-value--placeholder">
@@ -78,6 +84,12 @@ export default function Contact() {
                             )}
                         </div>
                     ))}
+                    {contacts.length === 0 && (
+                        <div className="contact__link-item contact__link-item--note">
+                            <span className="contact__link-label">СЛЕДУЮЩИЙ ШАГ</span>
+                            <span className="contact__link-value">Выберите удобный канал связи</span>
+                        </div>
+                    )}
                 </div>
 
                 <a className="contact__back-to-top" href="#home">
