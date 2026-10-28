@@ -10,6 +10,7 @@ const EMPTY_FORM = {
     category: "",
     description: "",
     serviceTags: "",
+    externalUrl: "",
     featuredOnHome: false,
     published: false,
     sortOrder: 0,
@@ -30,6 +31,7 @@ function itemToForm(item) {
         category: item.category || "",
         description: item.description || "",
         serviceTags: (item.serviceTags || []).join(", "),
+        externalUrl: item.externalUrl || "",
         featuredOnHome: Boolean(item.featuredOnHome),
         published: Boolean(item.published),
         sortOrder: item.sortOrder ?? 0,
@@ -164,6 +166,7 @@ export default function AdminPage() {
         setNotice("");
         const payload = {
             ...form,
+            externalUrl: form.externalUrl.trim() || null,
             sortOrder: Number(form.sortOrder),
             serviceTags: form.serviceTags.split(",").map((tag) => tag.trim()).filter(Boolean),
         };
@@ -320,6 +323,7 @@ export default function AdminPage() {
                         </div>
                         <label>ОПИСАНИЕ<textarea maxLength="5000" rows="4" value={form.description} onChange={(event) => setForm({ ...form, description: event.target.value })} required /></label>
                         <label>УСЛУГИ <span className="admin-field-hint">через запятую</span><input value={form.serviceTags} onChange={(event) => setForm({ ...form, serviceTags: event.target.value })} placeholder="SMM, контент, таргет" required /></label>
+                        <label>ССЫЛКА НА СТРАНИЦУ ПРОЕКТА <span className="admin-field-hint">Instagram, TikTok или сайт · необязательно</span><input type="url" maxLength="2048" value={form.externalUrl} onChange={(event) => setForm({ ...form, externalUrl: event.target.value })} placeholder="https://www.instagram.com/brand/" /></label>
                         <div className="admin-switches">
                             <label className="admin-switch"><input type="checkbox" checked={form.published} onChange={(event) => setForm({ ...form, published: event.target.checked })} /><span className="admin-switch__track" /><span><strong>Опубликовать</strong><small>Работа появится в публичном портфолио</small></span></label>
                             <label className={`admin-switch${form.type !== "PROJECT" ? " is-disabled" : ""}`}><input type="checkbox" checked={form.featuredOnHome} disabled={form.type !== "PROJECT"} onChange={(event) => setForm({ ...form, featuredOnHome: event.target.checked })} /><span className="admin-switch__track" /><span><strong>Показать на главной</strong><small>В избранное можно добавить не больше двух проектов</small></span></label>
@@ -328,7 +332,7 @@ export default function AdminPage() {
                     </form>
 
                     {selectedItem && <section className="admin-media-section">
-                        <div className="admin-media-section__heading"><div><span className="admin-kicker">ГАЛЕРЕЯ РАБОТЫ</span><h2>Фото и видео <span>({selectedItem.media?.length || 0})</span></h2></div><span className="admin-field-hint">JPG · PNG · WEBP · MP4 · WEBM / до 50 МБ</span></div>
+                        <div className="admin-media-section__heading"><div><span className="admin-kicker">ГАЛЕРЕЯ РАБОТЫ</span><h2>Фото и видео <span>({selectedItem.media?.length || 0})</span></h2><p className="admin-field-hint">Меньший порядок показывается раньше. Первое медиа — превью карусели.</p></div><span className="admin-field-hint">JPG · PNG · WEBP · MP4 · WEBM / до 50 МБ</span></div>
                         <form className="admin-upload" onSubmit={handleUpload}>
                             <label className="admin-file-picker">{upload.file ? upload.file.name : "＋ ВЫБРАТЬ ФОТО ИЛИ ВИДЕО"}<input type="file" accept="image/jpeg,image/png,image/webp,video/mp4,video/webm" onChange={(event) => setUpload({ ...upload, file: event.target.files?.[0] || null })} /></label>
                             <input aria-label="Описание медиа" placeholder="Описание для доступности и SEO" value={upload.altText} onChange={(event) => setUpload({ ...upload, altText: event.target.value })} />
@@ -350,7 +354,7 @@ function MediaEditor({ media, disabled, onSave, onDelete }) {
     const [sortOrder, setSortOrder] = useState(media.sortOrder ?? 0);
     return (
         <article className="admin-media-card">
-            {media.mediaType === "VIDEO" ? <video src={getMediaUrl(media.url)} controls playsInline preload="metadata" /> : <img src={getMediaUrl(media.url)} alt={media.altText || "Изображение портфолио"} />}
+            {media.type === "VIDEO" ? <video src={getMediaUrl(media.url)} controls playsInline preload="metadata" /> : <img src={getMediaUrl(media.url)} alt={media.altText || "Изображение портфолио"} />}
             <label>ALT / ОПИСАНИЕ<input maxLength="300" value={altText} onChange={(event) => setAltText(event.target.value)} /></label>
             <div className="admin-media-card__actions"><label>ПОРЯДОК<input type="number" min="0" value={sortOrder} onChange={(event) => setSortOrder(event.target.value)} /></label><button type="button" disabled={disabled} onClick={() => onSave(media, { altText, posterUrl: media.posterUrl || "", sortOrder })}>СОХРАНИТЬ</button><button type="button" className="admin-media-card__delete" disabled={disabled} onClick={() => onDelete(media)} aria-label="Удалить файл">×</button></div>
         </article>

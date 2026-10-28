@@ -28,19 +28,60 @@ function PortfolioMedia({ item, media, index, onOpen }) {
 
 export default function PortfolioCard({ item, number, featured = false, showAllMedia = false }) {
     const [activeImage, setActiveImage] = useState(null);
-    const media = showAllMedia ? item.media : item.media.slice(0, 1);
+    const [activeSlide, setActiveSlide] = useState(0);
+    const allMedia = item.media || [];
+    const showCarousel = allMedia.length >= 2;
+    const carouselSlide = allMedia[activeSlide] || allMedia[0];
+    const media = showCarousel
+        ? (carouselSlide ? [carouselSlide] : [])
+        : showAllMedia ? allMedia : allMedia.slice(0, 1);
+    const externalUrl = (() => {
+        try {
+            const url = new URL(item.externalUrl);
+            return url.protocol === "https:" || url.protocol === "http:" ? url.href : null;
+        } catch {
+            return null;
+        }
+    })();
+
+    function goToSlide(index) {
+        setActiveSlide((index + allMedia.length) % allMedia.length);
+    }
 
     return (
         <article className={`portfolio-card portfolio-feed-card${featured ? " portfolio-card--featured" : ""}`}>
-            <div className="portfolio-feed-card__media">
+            <div className={`portfolio-feed-card__media${showCarousel ? " portfolio-feed-card__media--carousel" : ""}`}>
                 {media.map((entry, index) => (
                     <div className="portfolio-feed-card__media-item" key={entry.id}>
-                        <PortfolioMedia item={item} media={entry} index={index} onOpen={setActiveImage} />
+                        <PortfolioMedia item={item} media={entry} index={showCarousel ? activeSlide : index} onOpen={setActiveImage} />
                     </div>
                 ))}
                 <span className="portfolio-card__visual-index">
-                    {String(number).padStart(2, "0")} / {String(item.media.length).padStart(2, "0")}
+                    {showCarousel
+                        ? `${String(activeSlide + 1).padStart(2, "0")} / ${String(allMedia.length).padStart(2, "0")}`
+                        : `${String(number).padStart(2, "0")} / ${String(allMedia.length).padStart(2, "0")}`}
                 </span>
+                {showCarousel && (
+                    <>
+                        <button type="button" className="portfolio-carousel__arrow portfolio-carousel__arrow--previous"
+                            onClick={() => goToSlide(activeSlide - 1)} aria-label={`Предыдущее медиа: ${item.title}`}>
+                            <span aria-hidden="true">‹</span>
+                        </button>
+                        <button type="button" className="portfolio-carousel__arrow portfolio-carousel__arrow--next"
+                            onClick={() => goToSlide(activeSlide + 1)} aria-label={`Следующее медиа: ${item.title}`}>
+                            <span aria-hidden="true">›</span>
+                        </button>
+                        <div className="portfolio-carousel__pagination" role="group" aria-label={`${item.title}: выбрать слайд`}>
+                            {allMedia.map((entry, index) => (
+                                <button type="button" key={entry.id}
+                                    className={`portfolio-carousel__dot${index === activeSlide ? " is-active" : ""}`}
+                                    onClick={() => goToSlide(index)}
+                                    aria-label={`Слайд ${index + 1}${entry.type === "VIDEO" ? ", видео" : ", фото"}`}
+                                    aria-current={index === activeSlide ? "true" : undefined} />
+                            ))}
+                        </div>
+                    </>
+                )}
             </div>
 
             <div className="portfolio-card__content">
@@ -55,13 +96,23 @@ export default function PortfolioCard({ item, number, featured = false, showAllM
                         {item.serviceTags.map((service) => <span key={service}>{service}</span>)}
                     </div>
                 )}
+                {externalUrl && (
+                    <a className="portfolio-card__external-link" href={externalUrl}
+                        target="_blank" rel="noopener noreferrer">
+                        <span>ПОСМОТРЕТЬ СТРАНИЦУ</span><span aria-hidden="true">↗</span>
+                    </a>
+                )}
             </div>
 
             {activeImage && (
                 <ImageLightbox image={activeImage.url} title={item.title}
                     alt={activeImage.altText || `${item.title} — портфолио Азем`}
-                    id={String(activeImage.index + 1).padStart(2, "0")}
-                    total={String(item.media.filter((entry) => entry.type === "IMAGE").length).padStart(2, "0")}
+                    media={allMedia.map((entry) => ({
+                        ...entry,
+                        url: getMediaUrl(entry.url),
+                        posterUrl: getMediaUrl(entry.posterUrl),
+                    }))}
+                    initialIndex={activeImage.index}
                     onClose={() => setActiveImage(null)} />
             )}
         </article>
